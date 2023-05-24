@@ -1,5 +1,5 @@
 # main game function
-class CodeMaster
+class CodeMasterGame
   attr_accessor :player
 
   def available_colors
@@ -8,8 +8,8 @@ class CodeMaster
 
   def initialize
     puts "crack the computer's code!"
-    @player = new.Human
-    @bot = new.Computer
+    @player = Human.new
+    @bot = Computer.new
     available_colors
   end
 end
@@ -31,3 +31,5 @@ class Computer
     @computer_code = []
   end
 end
+
+CodeMasterGame.new
