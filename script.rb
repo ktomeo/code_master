@@ -1,9 +1,12 @@
+require_relative './human'
+require_relative './computer'
+
 # main game function
 class CodeMasterGame
   attr_accessor :player
 
   def available_colors
-    puts "the colors available are: 'red', 'green', 'yellow', 'blue', 'orange', 'purple'"
+    puts "the available colors are: 'red', 'green', 'yellow', 'blue', 'orange', 'purple'"
   end
 
   def initialize
@@ -11,24 +14,6 @@ class CodeMasterGame
     @player = Human.new
     @bot = Computer.new
     available_colors
-  end
-end
-
-# recieves player inputs
-class Human
-  attr_accessor :human_guess
-
-  def initialize
-    @human_guess = []
-  end
-end
-
-# generates computer inputs
-class Computer
-  attr_accessor :computer_code
-
-  def initialize
-    @computer_code = []
   end
 end
 
