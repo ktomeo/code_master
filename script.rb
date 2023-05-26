@@ -13,8 +13,39 @@ class CodeMasterGame
     puts "crack the computer's code!"
     @player = Human.new
     @bot = Computer.new
-    available_colors
+  end
+
+  def start_game
+    i = 0
+    until win_condition
+      if i == 12
+        puts "you lose! you didn't crack the code!"
+        break
+      else
+        available_colors
+        player_entry
+      end
+    end
+  end
+
+  def player_entry
+    4.times do
+      @player.push(gets.chomp.downcase)
+    end
+    i += 1
+  end
+
+  def player_result
+    puts @player
+    puts "partially correct: #{var}"
+    puts "matches: #{var2}"
+  end
+
+  def win_condition
+    if @player == @bot
+      puts 'you win! you guessed the code!'
+    end
   end
 end
 
-CodeMasterGame.new
+CodeMasterGame.new.start_game
