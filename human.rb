@@ -5,4 +5,11 @@ class Human
   def initialize
     @human_guess = []
   end
+
+  def player_entry
+    @human_guess = []
+    4.times do
+      @human_guess.push(gets.chomp.downcase)
+    end
+  end
 end

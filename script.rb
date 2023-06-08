@@ -23,16 +23,11 @@ class CodeMasterGame
         break
       else
         available_colors
-        player_entry
+        @player.player_entry
+        
+        i += 1
       end
     end
-  end
-
-  def player_entry
-    4.times do
-      @player.push(gets.chomp.downcase)
-    end
-    i += 1
   end
 
   def player_result
