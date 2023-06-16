@@ -16,30 +16,46 @@ class CodeMasterGame
   end
 
   def start_game
-    i = 0
-    until win_condition
-      if i == 12
-        puts "you lose! you didn't crack the code!"
+    @bot.generate_code
+    i = 12
+    until i.zero? do
+      if @player.human_guess == @bot.computer_code
+        win_condition
         break
       else
-        available_colors
         @player.player_entry
-        
-        i += 1
+
+        player_result
+        i -= 1
+        puts "you have #{i} turns(s) remaining"
       end
+    end
+    if i.zero?
+      puts 'you ran out of turns. you lose!'
     end
   end
 
   def player_result
-    puts @player
-    puts "partially correct: #{var}"
-    puts "matches: #{var2}"
+    puts
+    puts "you guessed #{@player.human_guess}"
+    puts "partial matches: "
+    puts "matches: #{compare_arrays}"
+    puts
+    available_colors
   end
 
   def win_condition
-    if @player == @bot
-      puts 'you win! you guessed the code!'
+    puts 'you win! you guessed the code!'
+  end
+
+  def compare_arrays
+    count = 0
+    @bot.computer_code.each_with_index do |color, index|
+      if color == @player.human_guess[index]
+        count += 1
+      end
     end
+    count
   end
 end
 

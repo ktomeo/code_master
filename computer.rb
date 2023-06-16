@@ -9,7 +9,7 @@ class Computer
   def generate_code
     4.times do
       code = rand(6)
-      if code == 0
+      if code.zero?
         @computer_code.push('red')
       elsif code == 1
         @computer_code.push('green')
